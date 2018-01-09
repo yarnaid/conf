@@ -1,12 +1,18 @@
-if [[ -v ZSH_PROF ]]; then
-  zmodload zsh/zprof
-fi
+# if [[ -v ZSH_PROF ]]; then
+#   zmodload zsh/zprof
+# fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/yarnaid/.oh-my-zsh
+if [ -d /home ]; then
+  HM=/home
+else
+  HM=/Users
+fi
+
+export ZSH=${HM}/yarnaid/.oh-my-zsh
 source ~/.profile
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -120,25 +126,15 @@ source $ZSH/oh-my-zsh.sh
 
 test -e "${HOME}/.iterm1_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-bindkey -e
-bindkey '[C' forward-word
-bindkey '[D' backward-word
+if [ -d /Users ]; then
+  bindkey -e
+  bindkey '[C' forward-word
+  bindkey '[D' backward-word
+fi
 
-
-### ZNT's installer added snippet ###
-#fpath=( "$fpath[@]" "$HOME/.config/znt/zsh-navigation-tools" )
-#autoload n-aliases n-cd n-env n-functions n-history n-kill n-list n-list-draw n-list-input n-options n-panelize n-help
-#autoload znt-usetty-wrapper znt-history-widget znt-cd-widget znt-kill-widget
-#alias naliases=n-aliases ncd=n-cd nenv=n-env nfunctions=n-functions nhistory=n-history
-#alias nkill=n-kill noptions=n-options npanelize=n-panelize nhelp=n-help
-#zle -N znt-history-widget
-#bindkey '^R' znt-history-widget
-#setopt AUTO_PUSHD HIST_IGNORE_DUPS PUSHD_IGNORE_DUPS
-#zstyle ':completion::complete:n-kill::bits' matcher 'r:|=** l:|=*'
-### END ###
 
 ### Added by Zplugin's installer
-source '/Users/yarnaid/.zplugin/bin/zplugin.zsh'
+source "${HM}/yarnaid/.zplugin/bin/zplugin.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
@@ -191,14 +187,18 @@ zplugin ice wait'1'
 zplugin light zdharma/zplugin-crasis
 ### END PLUGINS ###
 
-source "/usr/local/opt/zsh-git-prompt/zshrc.sh"
-fpath=(/usr/local/share/zsh-completions $fpath)
+if [ -f "/usr/local/opt/zsh-git-prompt/zshrc.sh" ]; then
+  source "/usr/local/opt/zsh-git-prompt/zshrc.sh"
+  fpath=(/usr/local/share/zsh-completions $fpath)
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/yarnaid/Documents/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/yarnaid/Documents/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "${HM}/yarnaid/Documents/google-cloud-sdk/path.zsh.inc" ]; then source "${HM}/yarnaid/Documents/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f /usr/share/google-cloud-sdk/completion.zsh.inc ]; then source /usr/share/google-cloud-sdk/completion.zsh.inc; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/yarnaid/Documents/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/yarnaid/Documents/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "${HM}/yarnaid/Documents/google-cloud-sdk/completion.zsh.inc" ]; then source "${HM}/yarnaid/Documents/google-cloud-sdk/completion.zsh.inc"; fi
 
 source <(helm completion zsh)
 source <(minikube completion zsh)
+source <(kubectl completion zsh)
