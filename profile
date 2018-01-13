@@ -1,3 +1,4 @@
+export HOMEBREW_GITHUB_API_TOKEN=8f8bbc8b22400ce3059cd5e100a01c8c82a5c763
 export PATH="/Applications/MongoDB.app/Contents/Resources/Vendor/mongodb:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export LC_ALL=en_US.UTF-8
