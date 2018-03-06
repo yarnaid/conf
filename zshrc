@@ -90,6 +90,7 @@ plugins=(
 	sublime
 	urltools
 	wd
+	virtualenvwrapper
 	)
 
 source $ZSH/oh-my-zsh.sh
