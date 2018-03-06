@@ -1,6 +1,6 @@
 export HOMEBREW_GITHUB_API_TOKEN=""
-export PATH="/Applications/MongoDB.app/Contents/Resources/Vendor/mongodb:$PATH"
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="/Applications/Redis.app/Contents/Resources/Vendor/redis/bin:/Applications/MongoDB.app/Contents/Resources/Vendor/mongodb:$PATH"
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH:/Users/yarnaid/Library/Python/3.6/bin:/Users/yarnaid/Library/Python/2.7/bin"
 export LC_ALL=en_US.UTF-8
 # export LANG=en_US.UTF-8
 export LANG=C
